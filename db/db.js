@@ -1,45 +1,40 @@
-const Client = require("pg");
+const { Client } = require("pg");
 const { PORT, USER, HOST, DB, PASSWORD } = require("../utils/config");
 
 let dbClient = null;
-
-//init the db
-function initialize() {
-  const initDB = new Client({
+//Init the db
+async function initialize() {
+  //New client connection instance
+  let initDB = new Client({
     user: USER,
     host: HOST,
     database: DB,
     password: PASSWORD,
     port: PORT,
   });
-  initDB.connect();
-  return initDB;
+  try {
+    //Connecting to the DB
+    await initDB.connect();
+    console.log("Database connected successfully");
+  } catch (err) {
+    //Here we throws an error
+    console.error("Database connection error:", err);
+    throw err;
+  }
+  return initDB
 }
 
 //ssingleton pattern that make sure there is only one instance of the db cleint
-function getClient() {
+async function getClient() {
   if (!dbClient) {
-    dbClient = initialize();
+    dbClient = await initialize();
   }
   return dbClient;
 }
 
-//perform a query in db
-const queryDatabase = (query) => {
-  return new Promise((resolve, reject) => {
-    getClient().query(query, (err, res) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.rows);
-      }
-    });
-  });
-};
-
 //Close the connection
-function close_client() {
-  if (dbClient) dbClient.end();
+async function close_client() {
+  if (dbClient) await dbClient.end();
 }
 
-module.exports = { getClient, close_client, queryDatabase };
+module.exports = { getClient, close_client };
