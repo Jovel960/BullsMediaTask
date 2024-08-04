@@ -1,9 +1,10 @@
-const { queryDatabase } = require('../../db/db'); // Use CommonJS for imports
+const { getClient } = require('../../db/db'); // Use CommonJS for imports
 
 module.exports = (on, config) => {
   on('task', {
-    queryDatabase(query) {
-      return queryDatabase(query);
+    async queryDatabase(query) {
+      const client = await getClient()
+      return await client.query(query);
     },
   });
 };
