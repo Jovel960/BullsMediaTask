@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS service_credential_types (
   try {
     //Perform db query
     await client.query(createTableQuery);
-    console.log("🚀 Tables created successfully! 🚀");
+    console.log("Tables created successfully!");
   } catch (err) {
     console.error("Error creating table:", err);
   } finally {
