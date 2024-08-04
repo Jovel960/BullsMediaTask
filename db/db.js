@@ -24,7 +24,7 @@ async function initialize() {
   return initDB
 }
 
-//ssingleton pattern that make sure there is only one instance of the db cleint
+//singleton pattern that make sure there is only one instance of the db client
 async function getClient() {
   if (!dbClient) {
     dbClient = await initialize();
