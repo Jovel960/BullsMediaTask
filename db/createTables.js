@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS affiliate_network_offers (
 );
 
 CREATE TABLE IF NOT EXISTS service_credential_types (
-    id SERIAL PRIMARY KEY, -- Use SERIAL for auto-incrementing primary key
+    id SERIAL PRIMARY KEY,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     short_name VARCHAR(250)
