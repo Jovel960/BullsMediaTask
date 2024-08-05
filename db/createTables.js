@@ -5,6 +5,13 @@ async function createTables() {
   const client = await getClient();
 
   const createTableQuery = `
+CREATE TABLE IF NOT EXISTS service_credential_types (
+    id SERIAL PRIMARY KEY,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP,
+    short_name VARCHAR(250)
+);
+
 CREATE TABLE IF NOT EXISTS service_credentials (
     id SERIAL PRIMARY KEY,
     name VARCHAR(250),
@@ -43,15 +50,8 @@ CREATE TABLE IF NOT EXISTS affiliate_network_offers (
     available_affiliate_networkd VARCHAR(250),
     FOREIGN KEY (service_credential_type_id) REFERENCES service_credential_types(id) 
 );
-
-CREATE TABLE IF NOT EXISTS service_credential_types (
-    id SERIAL PRIMARY KEY,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    short_name VARCHAR(250)
-);
   `;
-  //wrapping the interaction with the db with try catch blok
+  //wrapping the interaction with the db with try catch block
   try {
     //Perform db query
     await client.query(createTableQuery);

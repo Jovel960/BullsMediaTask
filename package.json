@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create_tables":"node db/createTables.js" ,
+    "create_tables": "node db/createTables.js",
+    "inject_data": "node db/injectTablesData.js",
+    "init_db" : "npm run create_tables && npm run inject_data",
+    "cy:test:db" : "npx cypress run --spec 'cypress/e2e/db/db_test.cy.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
