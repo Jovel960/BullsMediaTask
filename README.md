@@ -32,7 +32,7 @@ The .env parameters are:
 
 ## Flow
 
-- you can just run the test file using 'npm run cy:test:db' or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through utils/sqlQueryString.js at injectDataQuery
+- you can just run the test file using 'npm run cy:test:db' (for both windows and linux) or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through utils/sqlQueryString.js at injectDataQuery
 
 There is one main test files:
 
