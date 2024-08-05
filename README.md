@@ -1,7 +1,7 @@
 ## Set up
 
 1. Clone the the repo using git clone:
-   git clone https://github.com/Jovel960/BullsMediaTask.git
+   `git clone https://github.com/Jovel960/BullsMediaTask.git`
 2. Cd to the root of the project same in windows and linux
 3. run - `npm i`
 4. At the project root dir create .env file (the file params are listed below the set up instructions)
@@ -32,7 +32,7 @@ The .env parameters are:
 
 ## Flow
 
-- you can just run the test file using 'npm run cy:test:db' (for both windows and linux) or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through utils/sqlQueryString.js at injectDataQuery
+- you can just run the test file using `npm run cy:test:db` (for both windows and linux) or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through `utils/sqlQueryString.js` at injectDataQuery
 
 There is one main test files:
 
