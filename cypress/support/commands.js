@@ -27,3 +27,6 @@
 Cypress.Commands.add('queryDatabase', (query) => {
   return cy.task('queryDatabase', query);
 });
+Cypress.Commands.add('closeClient', () => {
+  return cy.task('closeDatabaseClient');
+});

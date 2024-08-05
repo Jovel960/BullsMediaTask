@@ -33,8 +33,8 @@ async function getClient() {
 }
 
 //Close the connection
-async function close_client() {
+async function closeClient() {
   if (dbClient) await dbClient.end();
 }
 
-module.exports = { getClient, close_client };
+module.exports = { getClient, closeClient };
