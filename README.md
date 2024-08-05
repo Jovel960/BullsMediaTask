@@ -36,7 +36,7 @@ The .env parameters are:
 
 - If your db is already initiated and you dont want the DB the cleaned up after the tests comment out the 'before' and 'after' hooks in 'cypress/e2e/db/db_test.cy.js'
 - If you want to insert more/other data go to 'utils/sqlQueryStrings.js' and change the 'injectDataQuery' value to your query
-- The idea behind the before and adter hooks is that the DB will not affected by the tests such as new data added and should be in testing db env
+- The idea behind the before and after hooks is that the DB will not affected by the tests such as new data added and should be in testing db env
 
 There is one main test files:
 
