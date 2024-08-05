@@ -14,11 +14,11 @@
    5.Switch to the PostgreSQL User: sudo -i -u postgres
    6.Access the PostgreSQL Prompt: psql
    5b. **On windows**
-6. Download PostgreSQL Installer: https://www.postgresql.org/download/windows/ and run it
+   1.Download PostgreSQL Installer: https://www.postgresql.org/download/windows/ and run it
    2.Ensure you include the PostgreSQL server, pgAdmin, and command-line tools during the installation.
    3.set up password for postgres
-7. Init the DB and complete the installation
-8. Open postgres UI or work through SQL shell (psql)
+   4.Init the DB and complete the installation
+   5.Open postgres UI or work through SQL shell (psql)
 
 ## ENV
 
