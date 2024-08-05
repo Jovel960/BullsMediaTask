@@ -1,6 +1,11 @@
+import { createTablesQuery, cleanUpDbQuery, injectDataQuery } from "../../../utils/sqlQueryStrings";
+
 describe("Testing the db", () => {
-  //An option to create new cypress task that initiallize the db in case its empty  and add a cleanup function to the after hook
-  // before(() => {})
+  //An option 
+  before(() => {
+    cy.queryDatabase(createTablesQuery);
+    cy.queryDatabase(injectDataQuery);
+  })
 
   it("Should query the database", () => {
     //Simple select query
@@ -37,12 +42,12 @@ describe("Testing the db", () => {
   it("Second test", () => {
     //A select query to fetch the tracking links and offer_id from  affiliate_network_offers that match only where service_credential_type_id = 6
     const query = `
-      SELECT 
+      select 
         offer_id,
         offer_tracking_link
-      FROM 
+      from 
         affiliate_network_offers 
-      WHERE 
+      where 
         service_credential_type_id = 6
     `;
     //Peform a query to the DB
@@ -57,7 +62,7 @@ describe("Testing the db", () => {
         const wprogramid = url.searchParams.get("wprogramid");
         //Assert wprogramid is eq to offer id
         expect(wprogramid).to.equal(row.offer_id.toString());
-        //Checking if wprogramid value is unique
+        //Assert wprogramid value is unique
         expect(wprogramIds.has(wprogramid)).to.be.false;
         //Adding its value to the set object
         wprogramIds.add(wprogramid);
@@ -87,13 +92,14 @@ describe("Testing the db", () => {
           (status) => status === "new" || status === "deactivated"
         );
          // Assert that no account should have only 'new' or 'deactivated' statuses
-         // The test expects this condition to be false
         expect(hasOnlyNewOrDeactivated).to.be.false;
       });
     });
   });
 
   after(() => {
-    cy.closeClient();
+    // An option to create a custom command that clean up the db
+    // cy.cleanUpDB()
+    cy.queryDatabase(cleanUpDbQuery)
   });
 });
