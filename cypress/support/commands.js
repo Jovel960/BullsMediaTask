@@ -1,32 +1,11 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
+// Adds a custom command to execute a database query using `cy.task`.
 Cypress.Commands.add('queryDatabase', (query) => {
+  // Sends a task to the Cypress plugin to run a query against the database.
   return cy.task('queryDatabase', query);
 });
+
+// Adds a custom command to close the database client connection using `cy.task`.
 Cypress.Commands.add('closeClient', () => {
+  // Sends a task to the Cypress plugin to close the database connection.
   return cy.task('closeDatabaseClient');
 });

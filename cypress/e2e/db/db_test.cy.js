@@ -28,8 +28,30 @@ describe("Testing the db", () => {
   });
 
 
-  it("Second test", () => {
-  })
+ it('Second test', () => {
+    const query = `
+      SELECT 
+        offer_id,
+        offer_traCking_link
+      FROM 
+        affiliate_network_offers 
+      WHERE 
+        service_credential_type_id = 6
+    `;
+
+    cy.task('queryDatabase', query).then((rows) => {
+      const wprogramIds = new Set();
+
+      rows.forEach(row => {
+        const url = new URL(row.offer_tracking_link);
+        const wprogramid = url.searchParams.get('wprogramid');
+        expect(wprogramid).to.equal(row.offer_id.toString());
+        expect(wprogramIds.has(wprogramid)).to.be.false;
+        wprogramIds.add(wprogramid);
+      });
+    });
+  });
+
 
   after(() => {
     cy.closeClient();
