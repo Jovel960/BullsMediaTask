@@ -99,7 +99,7 @@ describe("Testing the db", () => {
 
   after(() => {
     // An option to create a custom command that clean up the db
-    // cy.cleanUpDB()
     cy.queryDatabase(cleanUpDbQuery)
+    cy.closeClient()
   });
 });

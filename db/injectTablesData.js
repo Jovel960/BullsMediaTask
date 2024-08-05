@@ -8,8 +8,10 @@ async function injectData() {
     await client.query(injectDataQuery);
     console.log("Data injected successfully!");
   } catch (err) {
+    //Log the error cause
     console.error("Error injecting data:", err);
   } finally {
+    //Close the db connection
     await client.end();
   }
 }

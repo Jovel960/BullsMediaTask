@@ -8,8 +8,10 @@ async function removeTables() {
     await client.query(injectDataQuery);
     console.log("Tables removed successfully!");
   } catch (err) {
+    //Log the error cause
     console.error("Error removing data:", err);
   } finally {
+    //Close the db connection
     await client.end();
   }
 }

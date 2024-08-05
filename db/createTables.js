@@ -9,8 +9,10 @@ async function createTables() {
     await client.query(createTablesQuery);
     console.log("Tables created successfully!");
   } catch (err) {
+    //Log the error cause
     console.error("Error creating table:", err);
   } finally {
+    //Close the db connection
     await client.end();
   }
 }
