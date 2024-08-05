@@ -32,7 +32,11 @@ The .env parameters are:
 
 ## Flow
 
-- you can just run the test file using `npm run cy:test:db` (for both windows and linux) or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through `utils/sqlQueryString.js` at injectDataQuery
+- You can just run the test file using `npm run cy:test:db` (for both windows and linux) or create the tables using `npm run createTables` and inject the data using 'npm run inject_data', if you want to change the data that i use during the tests you can change it through `utils/sqlQueryString.js` at injectDataQuery
+
+- If your db is already initiated and you dont want the DB the cleaned up after the tests comment out the 'before' and 'after' hooks in 'cypress/e2e/db/db_test.cy.js'
+- If you want to insert more/other data go to 'utils/sqlQueryStrings.js' and change the 'injectDataQuery' value to your query
+- The idea behind the before and adter hooks is that the DB will not affected by the tests such as new data added and should be in testing db env
 
 There is one main test files:
 
