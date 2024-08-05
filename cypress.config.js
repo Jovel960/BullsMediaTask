@@ -8,6 +8,7 @@ module.exports = defineConfig({
           try {
             const client = await getClient();
             const result = await client.query(query);
+            console.log(result.rows);
             return result.rows;
           } catch (error) {
             throw new Error(`Database query failed: ${error.message}`);
