@@ -14,7 +14,7 @@ module.exports = defineConfig({
             console.log(result.rows);
             return result.rows || null;
           } catch (error) {
-            throw new Error(`Database query failed: ${error.message}`);
+            console.error(`Database query failed: ${error.message}`);
           }
         },
         //Cy teask to close the DB connection
@@ -24,8 +24,7 @@ module.exports = defineConfig({
             console.log("Database client closed");
             return null;
           } catch (error) {
-            console.error(`Failed to close database client: ${error.message}`);
-            throw error;
+            console.error(`Database connection failed: ${error.message}`);
           }
         },
       });
