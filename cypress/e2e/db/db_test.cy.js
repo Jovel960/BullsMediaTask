@@ -51,7 +51,7 @@ describe("Testing the db", () => {
         service_credential_type_id = 6
     `;
     //Peform a query to the DB
-    cy.task("queryDatabase", query).then((rows) => {
+    cy.queryDatabase(query).then((rows) => {
       //Creating new Set to insure that only one unique val exists
       const wprogramIds = new Set();
 
@@ -83,7 +83,7 @@ describe("Testing the db", () => {
         service_credential_id
     `;
 
-    cy.task("queryDatabase", query).then((rows) => {
+    cy.queryDatabase(query).then((rows) => {
       rows.forEach((row) => {
         //Extract the statuses array
         const statuses = row.statuses;
